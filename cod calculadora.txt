@@ -1,0 +1,190 @@
+unit Unit1;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls;
+
+type
+
+  { TCalculadora }
+
+  TCalculadora = class(TForm)
+    btn7: TButton;
+    btn2: TButton;
+    btn3: TButton;
+    btnMenos: TButton;
+    btn0: TButton;
+    btnVirgula: TButton;
+    btnDivisao: TButton;
+    btnIgual: TButton;
+    btnAC: TButton;
+    btn8: TButton;
+    btn9: TButton;
+    btnMult: TButton;
+    btn4: TButton;
+    btn5: TButton;
+    btn6: TButton;
+    btnMais: TButton;
+    btn1: TButton;
+    edtResultado: TEdit;
+    StatusBar1: TStatusBar;
+    procedure btn0Click(Sender: TObject);
+    procedure btn1Click(Sender: TObject);
+    procedure btn2Click(Sender: TObject);
+    procedure btn3Click(Sender: TObject);
+    procedure btn4Click(Sender: TObject);
+    procedure btn5Click(Sender: TObject);
+    procedure btn6Click(Sender: TObject);
+    procedure btn7Click(Sender: TObject);
+    procedure btn8Click(Sender: TObject);
+    procedure btn9Click(Sender: TObject);
+    procedure btnACClick(Sender: TObject);
+    procedure btnDivisaoClick(Sender: TObject);
+    procedure btnIgualClick(Sender: TObject);
+    procedure btnMaisClick(Sender: TObject);
+    procedure btnMenosClick(Sender: TObject);
+    procedure btnMultClick(Sender: TObject);
+    procedure btnVirgulaClick(Sender: TObject);
+    procedure edtResultadoChange(Sender: TObject);
+  private
+    operacao:string;
+    valorA:real;
+    procedure pegarNumeroBotao(Sender:TObject);
+    procedure SetarOperacao(Sender:TObject);
+  public
+
+  end;
+
+var
+  Calculadora: TCalculadora;
+
+implementation
+
+{$R *.lfm}
+
+{ TCalculadora }
+
+procedure TCalculadora.btn7Click(Sender: TObject);
+begin
+  pegarNumeroBotao (Sender);
+end;
+
+procedure TCalculadora.btn4Click(Sender: TObject);
+begin
+    pegarNumeroBotao (Sender);
+end;
+
+procedure TCalculadora.btn1Click(Sender: TObject);
+begin
+    pegarNumeroBotao (Sender);
+end;
+
+procedure TCalculadora.btn0Click(Sender: TObject);
+begin
+    pegarNumeroBotao (Sender);
+end;
+
+procedure TCalculadora.btn2Click(Sender: TObject);
+begin
+    pegarNumeroBotao (Sender);
+end;
+
+procedure TCalculadora.btn3Click(Sender: TObject);
+begin
+    pegarNumeroBotao (Sender);
+end;
+
+procedure TCalculadora.btn5Click(Sender: TObject);
+begin
+    pegarNumeroBotao (Sender);
+end;
+
+procedure TCalculadora.btn6Click(Sender: TObject);
+begin
+    pegarNumeroBotao (Sender);
+end;
+
+procedure TCalculadora.btn8Click(Sender: TObject);
+begin
+    pegarNumeroBotao (Sender);
+end;
+
+procedure TCalculadora.btn9Click(Sender: TObject);
+begin
+    pegarNumeroBotao (Sender);
+end;
+
+procedure TCalculadora.btnACClick(Sender: TObject);
+begin
+  edtResultado.Text := '';
+end;
+
+procedure TCalculadora.btnDivisaoClick(Sender: TObject);
+begin
+  SetarOperacao(Sender);
+end;
+
+procedure TCalculadora.btnIgualClick(Sender: TObject);
+var
+  resu: real;
+begin
+  if operacao = 'X' then
+  begin
+    resu := valorA * StrToFloat(edtResultado.Text);
+  end
+  else if operacao = '-' then
+  begin
+    resu := valorA - StrToFloat(edtResultado.Text);
+  end
+  else if operacao = '+' then
+  begin
+    resu := valorA + StrToFloat(edtResultado.Text);
+  end
+  else if operacao = '/' then
+  begin
+    resu := valorA / StrToFloat(edtResultado.Text);
+end;
+  edtResultado.Text:=FloatToStr(resu);
+end;
+
+procedure TCalculadora.btnMaisClick(Sender: TObject);
+begin
+  SetarOperacao(Sender);
+end;
+
+procedure TCalculadora.btnMenosClick(Sender: TObject);
+begin
+  SetarOperacao(Sender);
+end;
+
+procedure TCalculadora.btnMultClick(Sender: TObject);
+begin
+SetarOperacao(Sender);
+end;
+
+procedure TCalculadora.btnVirgulaClick(Sender: TObject);
+begin
+      pegarNumeroBotao (Sender);
+end;
+
+procedure TCalculadora.edtResultadoChange(Sender: TObject);
+begin
+
+end;
+
+procedure TCalculadora.pegarNumeroBotao(Sender: TObject);
+begin
+     edtResultado.Text := edtResultado.Text + TButton(Sender).Caption;
+end;
+
+procedure TCalculadora.SetarOperacao(Sender: TObject);
+begin
+  valorA:= StrToFloat(edtResultado.Text);
+  operacao := TButton(Sender).Caption;
+  edtResultado.Text :='';
+end;
+
+end.
